@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Counter from '../Counter';
 import { incrementCounter, decrementCounter } from '../../actions'
+import './app.scss'
 
 const App = (props) => {
   console.log(props);
