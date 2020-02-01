@@ -1,7 +1,7 @@
 // import { connect } from 'react-redux'
 import React from 'react';
 
-export default (props) => <div>{props.counter}</div>
+export default (props) => <div>{"Counter: " + props.counter}</div>
 
 // const mapStateToProps = (state) => {
 //   return {
