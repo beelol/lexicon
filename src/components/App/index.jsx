@@ -5,14 +5,10 @@ import Counter from '../Counter';
 import { incrementCounter, decrementCounter } from '../../actions'
 import './app.scss'
 
-const App = (props) => {
-  console.log(props);
-
-  return <div>
-    <Button variant="contained" color="primary" onClick={props.incrementCounter}>Click Me!</Button>
-    <Counter counter={props.counter} />
-  </div>
-};
+const App = (props) => <div>
+  <Button variant="contained" color="primary" onClick={props.incrementCounter}>Click Me!</Button>
+  <Counter counter={props.counter} />
+</div>
 
 const mapStateToProps = state => ({ counter: state.counter });
 
