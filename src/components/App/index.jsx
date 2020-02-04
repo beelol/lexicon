@@ -11,7 +11,6 @@ class App extends React.Component {
 
   incrementCounterAndPostNewCount() {
     this.props.incrementCounter();
-    console.log(this.props.counter);
   }
 
   render() {
