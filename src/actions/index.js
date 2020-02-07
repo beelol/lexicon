@@ -10,13 +10,10 @@ export const decrementCounter = dispatch => () => dispatch({
 
 export const fetchCounter = (dispatch) => () => {
     fetch("http://localhost:3000/counters")
-    .then(res => res.json()).then(json => {
-      console.log(json.counters[0].count);
-      
+    .then(res => res.json()).then(json => 
       dispatch({
       type: FETCH_COUNTER,
       count: json.counters[0].count,
       counterId: json.counters[0]._id
-      });
-  });
+      }));
 }

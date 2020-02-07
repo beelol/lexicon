@@ -14,8 +14,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     return <div>
       <Button variant="contained" color="primary" onClick={this.incrementCounterAndPostNewCount.bind(this)}>Click Me!</Button>
       <Counter count={this.props.count} counterId={this.props.counterId} />
