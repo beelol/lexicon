@@ -46,7 +46,7 @@ models.connectDb().then(async () => {
 
 const createCounter = async () => {
   const defaultCounter = new models.all.Counter({
-    count: 5,
+    count: 10,
   });
 
   await defaultCounter.save();

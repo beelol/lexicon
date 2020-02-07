@@ -9,9 +9,9 @@ export const decrementCounter = dispatch => () => dispatch({
 });
 
 export const fetchCounter = (dispatch) => () => {
-    fetch("http://localhost:3000/testAPI")
+    fetch("http://localhost:3000/counters")
     .then(res => res.json()).then(json => dispatch({
       type: FETCH_COUNTER,
-      counter: json.counter
+      counter: json.counters[0].count
     }));
 }
