@@ -1,0 +1,488 @@
+input _idOperatorsFilterCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterFindManyCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterFindOneCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveManyCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterRemoveOneCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateManyCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+input _idOperatorsFilterUpdateOneCounterInput {
+  gt: MongoID
+  gte: MongoID
+  lt: MongoID
+  lte: MongoID
+  ne: MongoID
+  in: [MongoID]
+  nin: [MongoID]
+}
+
+type Counter {
+  count: Float
+  _id: MongoID!
+}
+
+"""A connection to a list of items."""
+type CounterConnection {
+  """Total object count."""
+  count: Int!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """Information to aid in pagination."""
+  edges: [CounterEdge!]!
+}
+
+"""An edge in a connection."""
+type CounterEdge {
+  """The item at the end of the edge"""
+  node: Counter!
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""List of items with pagination."""
+type CounterPagination {
+  """Total object count."""
+  count: Int
+
+  """Array of objects."""
+  items: [Counter]
+
+  """Information to aid in pagination."""
+  pageInfo: PaginationInfo!
+}
+
+input CreateManyCounterInput {
+  count: Float
+}
+
+type CreateManyCounterPayload {
+  """Created document ID"""
+  recordIds: [MongoID]!
+
+  """Created documents"""
+  records: [Counter]!
+
+  """Count of all documents created"""
+  createCount: Int!
+}
+
+input CreateOneCounterInput {
+  count: Float
+}
+
+type CreateOneCounterPayload {
+  """Created document ID"""
+  recordId: MongoID
+
+  """Created document"""
+  record: Counter
+}
+
+input FilterCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterCounterInput
+  OR: [FilterCounterInput!]
+  AND: [FilterCounterInput!]
+}
+
+input FilterFindManyCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterFindManyCounterInput
+  OR: [FilterFindManyCounterInput!]
+  AND: [FilterFindManyCounterInput!]
+}
+
+input FilterFindOneCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterFindOneCounterInput
+  OR: [FilterFindOneCounterInput!]
+  AND: [FilterFindOneCounterInput!]
+}
+
+input FilterRemoveManyCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterRemoveManyCounterInput
+  OR: [FilterRemoveManyCounterInput!]
+  AND: [FilterRemoveManyCounterInput!]
+}
+
+input FilterRemoveOneCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterRemoveOneCounterInput
+  OR: [FilterRemoveOneCounterInput!]
+  AND: [FilterRemoveOneCounterInput!]
+}
+
+input FilterUpdateManyCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterUpdateManyCounterInput
+  OR: [FilterUpdateManyCounterInput!]
+  AND: [FilterUpdateManyCounterInput!]
+}
+
+input FilterUpdateOneCounterInput {
+  count: Float
+  _id: MongoID
+  _ids: [MongoID]
+
+  """List of *indexed* fields that can be filtered via operators."""
+  _operators: OperatorsFilterUpdateOneCounterInput
+  OR: [FilterUpdateOneCounterInput!]
+  AND: [FilterUpdateOneCounterInput!]
+}
+
+"""
+The `ID` scalar type represents a unique MongoDB identifier in collection.
+MongoDB by default use 12-byte ObjectId value
+(https://docs.mongodb.com/manual/reference/bson-types/#objectid). But MongoDB
+also may accepts string or integer as correct values for _id field.
+"""
+scalar MongoID
+
+type Mutation {
+  """
+  Create one document with mongoose defaults, setters, hooks and validation
+  """
+  counterCreateOne(record: CreateOneCounterInput!): CreateOneCounterPayload
+
+  """
+  Creates Many documents with mongoose defaults, setters, hooks and validation
+  """
+  counterCreateMany(records: [CreateManyCounterInput!]!): CreateManyCounterPayload
+
+  """
+  Update one document: 1) Retrieve one document by findById. 2) Apply updates to
+  mongoose document. 3) Mongoose applies defaults, setters, hooks and
+  validation. 4) And save it.
+  """
+  counterUpdateById(record: UpdateByIdCounterInput!): UpdateByIdCounterPayload
+
+  """
+  Update one document: 1) Retrieve one document via findOne. 2) Apply updates to
+  mongoose document. 3) Mongoose applies defaults, setters, hooks and
+  validation. 4) And save it.
+  """
+  counterUpdateOne(
+    record: UpdateOneCounterInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateOneCounterInput
+    sort: SortUpdateOneCounterInput
+    skip: Int
+  ): UpdateOneCounterPayload
+
+  """
+  Update many documents without returning them: Use Query.update mongoose
+  method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  counterUpdateMany(
+    record: UpdateManyCounterInput!
+
+    """Filter by fields"""
+    filter: FilterUpdateManyCounterInput
+    sort: SortUpdateManyCounterInput
+    skip: Int
+    limit: Int = 1000
+  ): UpdateManyCounterPayload
+
+  """
+  Remove one document: 1) Retrieve one document and remove with hooks via findByIdAndRemove. 2) Return removed document.
+  """
+  counterRemoveById(_id: MongoID!): RemoveByIdCounterPayload
+
+  """
+  Remove one document: 1) Remove with hooks via findOneAndRemove. 2) Return removed document.
+  """
+  counterRemoveOne(
+    """Filter by fields"""
+    filter: FilterRemoveOneCounterInput
+    sort: SortRemoveOneCounterInput
+  ): RemoveOneCounterPayload
+
+  """
+  Remove many documents without returning them: Use Query.remove mongoose
+  method. Do not apply mongoose defaults, setters, hooks and validation. 
+  """
+  counterRemoveMany(
+    """Filter by fields"""
+    filter: FilterRemoveManyCounterInput!
+  ): RemoveManyCounterPayload
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterCounterInput {
+  _id: _idOperatorsFilterCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterFindManyCounterInput {
+  _id: _idOperatorsFilterFindManyCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterFindOneCounterInput {
+  _id: _idOperatorsFilterFindOneCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterRemoveManyCounterInput {
+  _id: _idOperatorsFilterRemoveManyCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterRemoveOneCounterInput {
+  _id: _idOperatorsFilterRemoveOneCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterUpdateManyCounterInput {
+  _id: _idOperatorsFilterUpdateManyCounterInput
+}
+
+"""For performance reason this type contains only *indexed* fields."""
+input OperatorsFilterUpdateOneCounterInput {
+  _id: _idOperatorsFilterUpdateOneCounterInput
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type PaginationInfo {
+  currentPage: Int!
+  perPage: Int!
+  pageCount: Int
+  itemCount: Int
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+}
+
+type Query {
+  counterById(_id: MongoID!): Counter
+  counterByIds(_ids: [MongoID]!, limit: Int = 1000, sort: SortFindByIdsCounterInput): [Counter]
+  counterOne(
+    """Filter by fields"""
+    filter: FilterFindOneCounterInput
+    skip: Int
+    sort: SortFindOneCounterInput
+  ): Counter
+  counterMany(
+    """Filter by fields"""
+    filter: FilterFindManyCounterInput
+    skip: Int
+    limit: Int = 1000
+    sort: SortFindManyCounterInput
+  ): [Counter]
+  counterCount(
+    """Filter by fields"""
+    filter: FilterCounterInput
+  ): Int
+  counterConnection(
+    """Forward pagination argument for returning at most first edges"""
+    first: Int
+
+    """Forward pagination argument for returning at most first edges"""
+    after: String
+
+    """Backward pagination argument for returning at most last edges"""
+    last: Int
+
+    """Backward pagination argument for returning at most last edges"""
+    before: String
+
+    """Filter by fields"""
+    filter: FilterFindManyCounterInput
+
+    """Sort argument for data ordering"""
+    sort: SortConnectionCounterEnum = _ID_DESC
+  ): CounterConnection
+  counterPagination(
+    """Page number for displaying"""
+    page: Int
+    perPage: Int = 20
+
+    """Filter by fields"""
+    filter: FilterFindManyCounterInput
+    sort: SortFindManyCounterInput
+  ): CounterPagination
+}
+
+type RemoveByIdCounterPayload {
+  """Removed document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Counter
+}
+
+type RemoveManyCounterPayload {
+  """Affected documents number"""
+  numAffected: Int
+}
+
+type RemoveOneCounterPayload {
+  """Removed document ID"""
+  recordId: MongoID
+
+  """Removed document"""
+  record: Counter
+}
+
+enum SortConnectionCounterEnum {
+  _ID_DESC
+  _ID_ASC
+}
+
+enum SortFindByIdsCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortFindManyCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortFindOneCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortRemoveOneCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortUpdateManyCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+enum SortUpdateOneCounterInput {
+  _ID_ASC
+  _ID_DESC
+}
+
+input UpdateByIdCounterInput {
+  count: Float
+  _id: MongoID!
+}
+
+type UpdateByIdCounterPayload {
+  """Updated document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Counter
+}
+
+input UpdateManyCounterInput {
+  count: Float
+}
+
+type UpdateManyCounterPayload {
+  """Affected documents number"""
+  numAffected: Int
+}
+
+input UpdateOneCounterInput {
+  count: Float
+}
+
+type UpdateOneCounterPayload {
+  """Updated document ID"""
+  recordId: MongoID
+
+  """Updated document"""
+  record: Counter
+}

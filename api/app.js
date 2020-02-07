@@ -9,10 +9,24 @@ var usersRouter = require('./routes/users');
 var testAPIRouter = require("./routes/testAPI");
 var counterRouter = require("./routes/counters");
 
-
 var cors = require('cors');
 
+var graphqlHTTP = require('express-graphql');
+var graphqlSchema = require('./schemas');
+
 var app = express();
+
+var root = {
+  hello: () => {
+    return 'Hello world!';
+  },
+};
+
+app.use('/graphql', graphqlHTTP({
+  schema: graphqlSchema,
+  rootValue: root,
+  graphiql: true,
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

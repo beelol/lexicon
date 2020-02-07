@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Counter = require('./counter');
+var Counter = require('./counter').Counter;
 
 const connectDb = () => {
   return mongoose.connect(/* process.env.DATABASE_URL */
