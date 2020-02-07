@@ -3,14 +3,19 @@ var router = express.Router();
 var models = require('../models')
 var ObjectId = require('mongodb').ObjectID;
 
-
-/* GET users listing. */
-router.patch('/', function(req, res, next) {
-  console.log(req.body);
-});
-
 router.get('/', async function(req, res, next) {
   res.json({counters: await models.all.Counter.find()});
+});
+
+router.patch('/:id', async function(req, res, next) {
+  console.log(req.body);
+  
+  var id = req.params.id;
+
+  await models.all.Counter.updateOne({_id: ObjectId(id)}, { $set: { count: req.body.count } }, (err, raw) => {
+
+    }
+  );
 });
 
 router.get('/:id', async function(req, res, next) {

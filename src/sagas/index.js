@@ -10,10 +10,11 @@ function* updateCounter(action) {
   const state = yield select();
 
   const body = {
-    counter: state.counter
+    count: state.counter.count
   }
 
-  fetch("http://localhost:3000/counter", 
+
+  fetch(`http://localhost:3000/counters/${state.counter.counterId}`, 
   {
     method: "PATCH", 
     body: JSON.stringify(body),
