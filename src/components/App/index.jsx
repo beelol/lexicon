@@ -14,15 +14,19 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+
     return <div>
       <Button variant="contained" color="primary" onClick={this.incrementCounterAndPostNewCount.bind(this)}>Click Me!</Button>
-      <Counter counter={this.props.counter} />
+      <Counter count={this.props.count} counterId={this.props.counterId} />
     </div>
   }
 
 }
 
-const mapStateToProps = state => ({ counter: state.counter });
+const mapStateToProps = state => {
+  return ({ count: state.counter.count, counterId: state.counter.counterId })
+}
 
 const mapDispatchToProps = (dispatch) => ({
   incrementCounter: incrementCounter(dispatch),

@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default (props) => <div>{"Counter: " + props.counter}</div>
+export default (props) => <div>{`Counter #${props.counterId}: ${props.count}`}</div>
