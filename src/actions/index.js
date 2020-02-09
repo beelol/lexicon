@@ -26,12 +26,4 @@ export const fetchCounter = (dispatch) => () => {
         counterId: json.data.counterOne._id
         })
       ));
-    
-    // fetch("http://localhost:3000/counters")
-    // .then(res => res.json()).then(json => 
-    //   dispatch({
-    //   type: FETCH_COUNTER,
-    //   count: json.counters[0].count,
-    //   counterId: json.counters[0]._id
-    //   }));
 }
