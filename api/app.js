@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-var allowedOrigins = ['http://localhost:8080'];
+var allowedOrigins = ['http://localhost:8080', 'http://localhost:3000'];
                   
 // configure cors
 app.use(cors({
