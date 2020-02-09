@@ -22,11 +22,7 @@ var root = {
   },
 };
 
-app.use('/graphql', graphqlHTTP({
-  schema: graphqlSchema,
-  rootValue: root,
-  graphiql: true,
-}));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,6 +48,12 @@ app.use(cors({
     }
     return callback(null, true);
   }
+}));
+
+app.use('/graphql', graphqlHTTP({
+  schema: graphqlSchema,
+  rootValue: root,
+  graphiql: false,
 }));
 
 app.use('/', indexRouter);
