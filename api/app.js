@@ -22,8 +22,6 @@ var root = {
   },
 };
 
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -54,6 +52,12 @@ app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
   rootValue: root,
   graphiql: false,
+}));
+
+app.use('/graphiql', graphqlHTTP({
+  schema: graphqlSchema,
+  rootValue: root,
+  graphiql: true,
 }));
 
 app.use('/', indexRouter);

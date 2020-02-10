@@ -5,6 +5,8 @@ import { takeLatest, select } from 'redux-saga/effects'
 
 import {INCREMENT_COUNTER_ACTION, DECREMENT_COUNTER_ACTION} from "../constants"
 
+import { sendMutation } from 'surge-graphql'
+
 function* updateCounter(action) {
 
   const state = yield select();
@@ -13,16 +15,29 @@ function* updateCounter(action) {
     count: state.counter.count
   }
 
+  var query = 
+    `mutation {
+      counterUpdateById(record: {
+        _id: \"${state.counter.counterId}\",
+        count: ${state.counter.count}
+      }) {
+        recordId
+      }
+    }`;
 
-  fetch(`http://localhost:3000/counters/${state.counter.counterId}`, 
-  {
-    method: "PATCH", 
-    body: JSON.stringify(body),
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-        }
-  }).then(response => response.json())
-  .then(json => console.log(json));
+  var url = "http://localhost:3000/graphql";
+
+  console.log(query);
+    
+
+  sendMutation(url, query/*
+    {body: 
+      {
+        variables: 
+          { "_id": state.counter.counterId, "count": state.counter.count }
+      }
+    }*/
+).catch(err => console.log(err));
 }
 
 function* captureIncrementCounterSaga() {
@@ -30,3 +45,5 @@ function* captureIncrementCounterSaga() {
 }
 
 export default captureIncrementCounterSaga;
+
+// "{"query":"mutation {\n      counterUpdateById(record: {\n        _id: 5e4099aae27c6630bb3bfb2e,\n        count: 12\n      }) {\n        recordId\n      }\n    }"}"

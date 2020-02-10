@@ -20,7 +20,7 @@ export const fetchCounter = (dispatch) => () => {
 
     var url = "http://localhost:3000/graphql";
 
-    sendQuery(url, query, {}).then(res => res.json().then(json => dispatch({
+    sendQuery(url, query).then(res => res.json().then(json => dispatch({
         type: FETCH_COUNTER,
         count: json.data.counterOne.count,
         counterId: json.data.counterOne._id
