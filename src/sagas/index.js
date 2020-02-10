@@ -27,9 +27,6 @@ function* updateCounter(action) {
 
   var url = "http://localhost:3000/graphql";
 
-  console.log(query);
-    
-
   sendMutation(url, query/*
     {body: 
       {
