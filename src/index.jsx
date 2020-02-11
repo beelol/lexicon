@@ -6,6 +6,8 @@ import rootReducer from './reducers'
 import App from './components/App'
 import createSagaMiddleware from 'redux-saga'
 import captureIncrementCounterSaga from "./sagas"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import CounterClicker from './components/CounterClicker';
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -15,7 +17,10 @@ sagaMiddleware.run(captureIncrementCounterSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Route path="/" component={App} />
+      <Route path="/counter" component={CounterClicker} />
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
