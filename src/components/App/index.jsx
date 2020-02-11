@@ -1,25 +1,16 @@
 import { connect } from 'react-redux';
 import React from 'react';
-// import Button from '@material-ui/core/Button';
-// import Counter from '../Counter';
 import { incrementCounter, decrementCounter, fetchCounter } from '../../actions'
-import './app.scss'
+import './app.scss';
 
 class App extends React.Component {
-
-  componentDidMount() { this.props.fetchCounter() }
-
-  incrementCounterAndPostNewCount() {
-    this.props.incrementCounter();
-  }
-
   render() {
-    return <div>
-      {/* <Button variant="contained" color="primary" onClick={this.incrementCounterAndPostNewCount.bind(this)}>Click Me!</Button>
-      <Counter count={this.props.count} counterId={this.props.counterId} /> */}
-    </div>
+    return <React.Fragment>
+      {/* <Sidebar></Sidebar>
+      <Article></Article>
+      <Infobox></Infobox> */}
+    </React.Fragment>
   }
-
 }
 
 const mapStateToProps = state => {

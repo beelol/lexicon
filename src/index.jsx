@@ -8,10 +8,11 @@ import createSagaMiddleware from 'redux-saga'
 import captureIncrementCounterSaga from "./sagas"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CounterClicker from './components/CounterClicker';
+import Page from './components/Page';
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(captureIncrementCounterSaga);
 
@@ -20,6 +21,7 @@ ReactDOM.render(
     <Router>
       <Route path="/" component={App} />
       <Route path="/counter" component={CounterClicker} />
+      <Route path="/testpage" component={Page} />
     </Router>
   </Provider>,
   document.getElementById('app')
