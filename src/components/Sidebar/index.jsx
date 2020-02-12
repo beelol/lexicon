@@ -3,12 +3,7 @@ import React from 'react';
 import './sidebar.scss'
 import Drawer from '@material-ui/core/Drawer';
 import { openSidebar, closeSidebar } from '../../actions'
-
-import clsx from 'clsx';
-import { withStyles, makeStyles, useTheme, withTheme, styled } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -26,24 +21,21 @@ import { Button } from '@material-ui/core';
 const drawerWidth = 240;
 
 const sideList = (
-  <div >
-    <List>
-      <ListItem button>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-      </ListItem>
+  <List>
+    <ListItem button>
+      <ListItemIcon>
+        <InboxIcon />
+      </ListItemIcon>
+      <ListItemText primary="Inbox" />
+    </ListItem>
 
-      <ListItem button>
-        <ListItemIcon>
-          <MailIcon />
-        </ListItemIcon>
-        <ListItemText primary="Mail" />
-      </ListItem>
-
-    </List>
-  </div>
+    <ListItem button>
+      <ListItemIcon>
+        <MailIcon />
+      </ListItemIcon>
+      <ListItemText primary="Mail" />
+    </ListItem>
+  </List>
 );
 
 const styles = (theme) => ({// root: {
@@ -52,9 +44,6 @@ const styles = (theme) => ({// root: {
   // hide: {
   //   display: 'none',
   // },
-  paper: {
-    width: drawerWidth,
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -76,16 +65,14 @@ class Sidebar extends React.Component {
   render() {
     const { classes, closeSidebar, theme, open } = this.props
 
-    console.log(this.props);
-
-
     return <Drawer
       anchor={"left"}
       variant={"persistent"}
       open={open}
       onClose={closeSidebar}
+      className={classes.drawer}
       classes={{
-        paper: classes.paper
+        paper: classes.drawerPaper
       }}
     >
       <div className={classes.drawerHeader}>
@@ -93,14 +80,8 @@ class Sidebar extends React.Component {
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </div>
-      <div
-        tabIndex={0}
-        role="button"
-        onClick={closeSidebar}
-        onKeyDown={closeSidebar}
-      >
-        {sideList}
-      </div>
+      <Divider />
+      {sideList}
     </Drawer>
   }
 }
