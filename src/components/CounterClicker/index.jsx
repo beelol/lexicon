@@ -3,6 +3,13 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Counter from '../Counter';
 import { incrementCounter, decrementCounter, fetchCounter } from '../../actions'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 class CounterClicker extends React.Component {
 
@@ -13,12 +20,11 @@ class CounterClicker extends React.Component {
   }
 
   render() {
-    return <div>
+    return <ThemeProvider theme={darkTheme}>
       <Button variant="contained" color="primary" onClick={this.incrementCounterAndPostNewCount.bind(this)}>Click Me!</Button>
       <Counter count={this.props.count} counterId={this.props.counterId} />
-    </div>
+    </ThemeProvider>
   }
-
 }
 
 const mapStateToProps = state => {

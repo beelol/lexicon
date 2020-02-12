@@ -1,3 +1,2 @@
-export const INCREMENT_COUNTER_ACTION = "INCREMENT_COUNTER";
-export const DECREMENT_COUNTER_ACTION = "DECREMENT_COUNTER";
-export const FETCH_COUNTER = "FETCH_COUNTER"
+export * from './counter';
+export * from './sidebar';

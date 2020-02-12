@@ -6,9 +6,6 @@ import './app.scss';
 class App extends React.Component {
   render() {
     return <React.Fragment>
-      {/* <Sidebar></Sidebar>
-      <Article></Article>
-      <Infobox></Infobox> */}
     </React.Fragment>
   }
 }
