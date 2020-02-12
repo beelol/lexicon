@@ -4,10 +4,13 @@ import './page.scss';
 import Sidebar from '../Sidebar';
 import Article from '../Article';
 import Infobox from '../Infobox';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 class Page extends React.Component {
   render() {
     return <React.Fragment>
+      <CssBaseline />
       <Sidebar></Sidebar>
       <Article></Article>
       <Infobox></Infobox>
@@ -16,11 +19,11 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return ({})
-}
+  return ({});
+};
 
 const mapDispatchToProps = (dispatch) => ({
-})
+});
 
 export default connect(
   mapStateToProps,

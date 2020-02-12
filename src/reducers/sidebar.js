@@ -1,7 +1,7 @@
 import { SIDEBAR_SET_ACTIVE_ACTION } from '../constants';
 
 export default (state = {
-  open: false
+  open: true
 }, action) => {
   switch (action.type) {
     case SIDEBAR_SET_ACTIVE_ACTION:

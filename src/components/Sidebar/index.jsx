@@ -46,7 +46,7 @@ const sideList = (
   </div>
 );
 
-const styles = {// root: {
+const styles = (theme) => ({// root: {
   //   display: 'flex',
   // },
   // hide: {
@@ -61,26 +61,43 @@ const styles = {// root: {
   },
   drawerPaper: {
     width: drawerWidth,
-  }
-};
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
+});
 
 class Sidebar extends React.Component {
 
   render() {
+    const { classes, closeSidebar, theme, open } = this.props
+
+    console.log(this.props);
+
+
     return <Drawer
       anchor={"left"}
       variant={"persistent"}
-      open={true}
-      onClose={this.props.closeSidebar}
+      open={open}
+      onClose={closeSidebar}
       classes={{
-        paper: this.props.classes.paper
+        paper: classes.paper
       }}
     >
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={closeSidebar}>
+          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
+      </div>
       <div
         tabIndex={0}
         role="button"
-        onClick={this.props.closeSidebar}
-        onKeyDown={this.props.closeSidebar}
+        onClick={closeSidebar}
+        onKeyDown={closeSidebar}
       >
         {sideList}
       </div>
@@ -98,4 +115,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(Sidebar));
+)(withStyles(styles, { withTheme: true })(Sidebar));
