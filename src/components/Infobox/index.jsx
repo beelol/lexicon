@@ -1,11 +1,29 @@
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import React from 'react';
 import './infobox.scss'
+import styles from './styles';
+import InfoboxProperty from './InfoboxProperty';
+import { Divider } from '@material-ui/core';
 
 class Infobox extends React.Component {
   render() {
-    return <div className={"infobox-container"}>
+    const { classes, theme } = this.props;
 
+    return <div className={classes.container}>
+      <div className={classes.innerContent}>
+        <div className={classes.drawerHeader} />
+        <Typography>Bee Bomber</Typography>
+
+        <div className={classes.infoboxImageContainer}>
+          <img className={classes.infoboxImage} src={"https://vignette.wikia.nocookie.net/wiredforwar/images/f/f7/AGK3HVY.jpg/revision/latest/scale-to-width-down/100?cb=20130901010959"}></img>
+        </div>
+
+        <Divider className={classes.divider} />
+
+        <InfoboxProperty name={"Class"} value={"Administrator"}></InfoboxProperty>
+      </div>
     </div>
   }
 }
@@ -16,6 +34,8 @@ const mapStateToProps = state => {
   })
 }
 
+// 
+
 const mapDispatchToProps = dispatch => ({
   // incrementCounter: incrementCounter(dispatch),
   // decrementCounter: decrementCounter(dispatch),
@@ -25,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Infobox);
+)(withStyles(styles, { withTheme: true })(Infobox));

@@ -15,63 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import clsx from 'clsx';
 
-const drawerWidth = 240;
-
-const styles = (theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-});
+import styles from './styles';
 
 class Page extends React.Component {
   render() {
@@ -107,44 +51,9 @@ class Page extends React.Component {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-              facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-              donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-              adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-              imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-              arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-              facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-              donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-              adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-              imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-              arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-              facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-              donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-              adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-              Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-              imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-              arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-        </Typography>
+        <Article></Article>
       </main>
-      {/* <Infobox></Infobox> */}
+      <Infobox></Infobox>
     </div>
   }
 }
