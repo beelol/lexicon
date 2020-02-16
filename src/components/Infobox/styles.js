@@ -7,8 +7,6 @@ export default (theme) => ({
     justifyContent: 'flex-end',
   },
   infoboxImage: {
-    // width: 200,
-    // height: 200,
     "margin-bottom": 20,
     "max-width": "100%",
     height: "auto"

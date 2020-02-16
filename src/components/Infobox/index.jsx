@@ -14,7 +14,7 @@ class Infobox extends React.Component {
     return <div className={classes.container}>
       <div className={classes.innerContent}>
         <div className={classes.drawerHeader} />
-        <Typography>Bee Bomber</Typography>
+        <Typography>Enforcer - With Bolters Cannons</Typography>
 
         <div className={classes.infoboxImageContainer}>
           <img className={classes.infoboxImage} src={"https://vignette.wikia.nocookie.net/wiredforwar/images/f/f7/AGK3HVY.jpg/revision/latest/scale-to-width-down/100?cb=20130901010959"}></img>
