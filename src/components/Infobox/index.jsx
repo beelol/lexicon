@@ -22,7 +22,7 @@ class Infobox extends React.Component {
 
         <Divider className={classes.divider} />
 
-        <InfoboxProperty name={"Class"} value={"Administrator"}></InfoboxProperty>
+        <InfoboxProperty name={"Class"} value={"Aggressor"}></InfoboxProperty>
       </div>
     </div>
   }

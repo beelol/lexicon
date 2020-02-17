@@ -1,0 +1,24 @@
+.key-value-pair {
+  // color: purple;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 24px;
+}
+
+.infobox-divider {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 1px;
+  height: 100%;
+  background: gray;
+}
+
+.infobox-key {
+
+}
+
+.infobox-value {
+  background-color: green;
+  color: red;
+}

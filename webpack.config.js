@@ -16,11 +16,17 @@ module.exports = {
           // Creates `style` nodes from JS strings
           'style-loader',
           // Translates CSS into CommonJS
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localsConvention: 'camelCase'
+            }
+          },
           // Compiles Sass to CSS
           'sass-loader',
         ],
-      }
+      },
     ]
   },
 
