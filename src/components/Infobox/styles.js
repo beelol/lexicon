@@ -29,8 +29,8 @@ export default (theme) => ({
     alignItems: 'center',
     'flex-direction': 'column'
   },
-  divider: {
-    width: 200,
+  infoboxDivider: {
+    width: "100%",
     "margin-bottom": 20
   }
 });

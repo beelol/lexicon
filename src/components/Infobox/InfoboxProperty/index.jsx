@@ -9,9 +9,11 @@ class InfoboxProperty extends React.Component {
     const { classes, theme, name, value } = this.props;
 
     return <div className={styles.keyValuePair}>
-      <Typography variant={"overline"}>{name} </Typography>
-      <div className={styles.infoboxDivider}></div>
-      <Typography variant={"caption"}>{value}</Typography>
+      <Typography className={classes.infoboxKey} variant={"overline"}>{name} </Typography>
+      <div className={styles.infoboxDividerContainer}>
+        <div className={styles.infoboxDivider} />
+      </div>
+      <Typography className={classes.infoboxValue} variant={"caption"}>{value}</Typography>
     </div >
   }
 }

@@ -6,19 +6,16 @@
   height: 24px;
 }
 
-.infobox-divider {
+.infobox-divider-container {
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 3px;
+  width: 2%;
+  height: 100%;
+}
+
+.infobox-divider {
   width: 1px;
   height: 100%;
   background: gray;
 }
 
-.infobox-key {
-
-}
-
-.infobox-value {
-  background-color: green;
-  color: red;
-}
