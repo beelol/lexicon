@@ -1,16 +1,15 @@
 var mongoose = require('mongoose');
-var graphqlComposeMongoose = require('graphql-compose-mongoose');
+var createGqlModel = require('../util');
 
-const counterSchema = new mongoose.Schema({
+console.log(createGqlModel);
+
+const schema = new mongoose.Schema({
   count: {
     type: Number
   },
 });
 
-var Counter = mongoose.model('Counter', counterSchema);
+console.log(__filename);
 
 // STEP 2: CONVERT MONGOOSE MODEL TO GraphQL PIECES
-const customizationOptions = {}; 
-const CounterTC = graphqlComposeMongoose.composeWithMongoose(Counter, customizationOptions);
-
-module.exports = {Counter, CounterTC};
+module.exports = createGqlModel("Counter", schema, {});
