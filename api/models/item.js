@@ -1,6 +1,8 @@
 // An item defined in the "lexicon."
 var mongoose = require('mongoose');
 var createGqlModel = require('../util').createGqlModel;
+var formatFilename = require('../util').formatFilename;
+var scriptName = formatFilename(__filename);
 
 const schema = new mongoose.Schema({
   properties: [{
@@ -9,4 +11,4 @@ const schema = new mongoose.Schema({
   }]
 });
 
-module.exports = createGqlModel('Item', schema, {});
+module.exports = createGqlModel(scriptName, schema, {});

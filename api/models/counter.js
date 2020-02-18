@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
-var createGqlModel = require('../util');
+var createGqlModel = require('../util').createGqlModel;
+var formatFilename = require('../util').formatFilename;
 
-console.log(createGqlModel);
+var scriptName = formatFilename(__filename);
 
 const schema = new mongoose.Schema({
   count: {
@@ -9,7 +10,5 @@ const schema = new mongoose.Schema({
   },
 });
 
-console.log(__filename);
-
 // STEP 2: CONVERT MONGOOSE MODEL TO GraphQL PIECES
-module.exports = createGqlModel("Counter", schema, {});
+module.exports = createGqlModel(scriptName, schema, {});

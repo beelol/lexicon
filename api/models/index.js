@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Counter = require('./counter').model;
+var Item = require('./item').model;
 
 const connectDb = () => {
   return mongoose.connect(/* process.env.DATABASE_URL */
@@ -7,4 +8,4 @@ const connectDb = () => {
 };
 
 exports.connectDb = connectDb;
-exports.all = {Counter};
+exports.all = {Counter, Item};
