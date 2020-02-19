@@ -39,6 +39,17 @@ models.connectDb().then(async () => {
 
     createCounter();
     createItem();
+
+    const defaultItem = new models.all.Item({
+      name: "Reaper - With Plasma Cannon",
+      image: "https://vignette.wikia.nocookie.net/wiredforwar/images/f/f7/AGK3HVY.jpg/revision/latest/scale-to-width-down/100?cb=20130901010959",
+      properties: [
+        {name: "HP", value: 70},
+        {name: "Armor", value: 60}
+      ]
+    });
+
+    await defaultItem.save();
   }
 
   server.listen(port);
@@ -66,7 +77,6 @@ const createItem = async () => {
 
   await defaultItem.save();
 };
-
 
 /**
  * Normalize a port into a number, string, or false.

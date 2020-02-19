@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
+
+mongoose.plugin(require('mongoose-slug-generator'));
+
 var Counter = require('./counter').model;
 var Item = require('./item').model;
 

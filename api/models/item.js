@@ -7,7 +7,7 @@ var scriptName = formatFilename(__filename);
 const schema = new mongoose.Schema({
   name: { type: String, unique: true},
   image: String,
-  slug: { type: String, unique: true},
+  slug: { type: String, slug: "name", unique: true},
   properties: [{
     type: [Object],
     name: {type: String, required: true},
