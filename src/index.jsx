@@ -30,7 +30,7 @@ ReactDOM.render(
       <Router>
         <Route path="/" component={App} />
         <Route path="/counter" component={CounterClicker} />
-        <Route path="/testpage" component={Page} />
+        <Route path="/pages/:slug" component={Page} />
       </Router>
     </ThemeProvider>
   </Provider>,

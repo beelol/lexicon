@@ -21,6 +21,8 @@ class Page extends React.Component {
   render() {
     const { classes, openSidebar, open, closeSidebar, theme } = this.props;
 
+    console.log(this.props);
+
     return <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -58,8 +60,8 @@ class Page extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return ({ open: state.sidebar.open });
+const mapStateToProps = (state, ownProps) => {
+  return ({ ...ownProps, open: state.sidebar.open });
 };
 
 const mapDispatchToProps = (dispatch) => ({
