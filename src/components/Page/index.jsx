@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar';
 import Article from '../Article';
 import Infobox from '../Infobox';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { openSidebar, closeSidebar } from '../../actions'
+import { openSidebar, closeSidebar, fetchItemBySlug } from '../../actions'
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,10 +18,21 @@ import clsx from 'clsx';
 import styles from './styles';
 
 class Page extends React.Component {
-  render() {
-    const { classes, openSidebar, open, closeSidebar, theme } = this.props;
 
-    console.log(this.props);
+  componentDidMount() {
+    console.log(`Changing page to ${this.props.match.params.slug}`);
+
+    this.props.fetchItemBySlug(this.props.match.params.slug);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.slug !== this.props.match.params.slug) {
+      console.log(`Changing page to ${this.props.match.params.slug}`);
+    }
+  }
+
+  render() {
+    const { classes, openSidebar, open, closeSidebar, theme, match, item } = this.props;
 
     return <div className={classes.root}>
       <CssBaseline />
@@ -42,7 +53,7 @@ class Page extends React.Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Persistent drawer
+            {item.name}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -55,18 +66,19 @@ class Page extends React.Component {
         <div className={classes.drawerHeader} />
         <Article></Article>
       </main>
-      <Infobox></Infobox>
+      <Infobox itemName={item.name} itemImage={item.image} itemProperties={item.properties}></Infobox>
     </div>
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return ({ ...ownProps, open: state.sidebar.open });
+  return ({ ownProps, open: state.sidebar.open, item: state.item });
 };
 
 const mapDispatchToProps = (dispatch) => ({
   openSidebar: openSidebar(dispatch),
-  closeSidebar: closeSidebar(dispatch)
+  closeSidebar: closeSidebar(dispatch),
+  fetchItemBySlug: fetchItemBySlug(dispatch)
 });
 
 export default connect(

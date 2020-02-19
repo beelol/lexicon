@@ -17,7 +17,6 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(captureIncrementCounterSaga);
 
-
 const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
