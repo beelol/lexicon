@@ -1,12 +1,15 @@
 var graphqlCompose = require('graphql-compose');
 var counterSchema = require('./counter');
+var itemSchema = require('./item');
 
 graphqlCompose.schemaComposer.Query.addFields({
-  ...counterSchema.CounterQuery
+  ...counterSchema.CounterQuery,
+  ...itemSchema.ItemQuery
 });
 
 graphqlCompose.schemaComposer.Mutation.addFields({
-  ...counterSchema.CounterMutation
+  ...counterSchema.CounterMutation,
+  ...itemSchema.ItemMutation
 });
 
 module.exports = graphqlCompose.schemaComposer.buildSchema();
