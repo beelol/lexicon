@@ -10,10 +10,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CounterClicker from './components/CounterClicker';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Page from './components/Page';
+import Home from './components/Home';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
 
 sagaMiddleware.run(captureIncrementCounterSaga);
 
@@ -29,6 +31,7 @@ ReactDOM.render(
       <Router>
         <Route path="/" component={App} />
         <Route path="/counter" component={CounterClicker} />
+        <Route path="/home" component={Home} />
         <Route path="/pages/:slug" component={Page} />
       </Router>
     </ThemeProvider>
@@ -36,4 +39,12 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-module.hot.accept();
+
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept('./reducers', () => {
+    const nextReducer = require('./reducers/index').default;
+
+    store.replaceReducer(nextReducer);
+  });
+}
