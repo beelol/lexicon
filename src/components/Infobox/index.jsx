@@ -26,12 +26,9 @@ class Infobox extends React.Component {
   render() {
     const { classes, theme, itemName, itemImage, itemProperties } = this.props;
 
-    console.log();
-
-
     return <div className={classes.container}>
+      <div className={classes.drawerHeader} />
       <div className={classes.innerContent}>
-        <div className={classes.drawerHeader} />
         <Typography variant="h6">{itemName}</Typography>
 
         <div className={classes.infoboxImageContainer}>

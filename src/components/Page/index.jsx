@@ -20,8 +20,6 @@ import styles from './styles';
 class Page extends React.Component {
 
   componentDidMount() {
-    console.log(`Changing page to ${this.props.match.params.slug}`);
-
     this.props.fetchItemBySlug(this.props.match.params.slug);
   }
 
@@ -35,7 +33,6 @@ class Page extends React.Component {
     const { classes, openSidebar, open, closeSidebar, theme, match, item } = this.props;
 
     return <div className={classes.root}>
-      <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {

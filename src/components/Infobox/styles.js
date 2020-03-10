@@ -21,7 +21,7 @@ export default (theme) => ({
     "justify-content": "center"
   },
   container: {
-    "margin-top": 40
+    "margin-top": 24
   },
   innerContent: {
     display: 'flex',

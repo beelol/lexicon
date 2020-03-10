@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { incrementCounter, decrementCounter, fetchCounter } from '../../actions'
 import './app.scss';
+import { CssBaseline } from '@material-ui/core';
 
 class App extends React.Component {
   render() {
     return <React.Fragment>
+      <CssBaseline />
     </React.Fragment>
   }
 }
